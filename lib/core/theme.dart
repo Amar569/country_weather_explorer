@@ -3,42 +3,70 @@ import 'package:flutter/material.dart';
 class AppTheme {
   AppTheme._();
 
-  static const seed = Color(0xFF3B5BDB);
+  static const primary = Color(0xFF4F46E5);
+  static const secondary = Color(0xFF7C3AED);
+  static const background = Color(0xFFF4F6FB);
+  static const ink = Color(0xFF1B1B3A);
+  static const muted = Color(0xFF6B7280);
+
+  static const headerGradient = LinearGradient(
+    colors: [primary, secondary],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const weatherGradient = LinearGradient(
+    colors: [Color(0xFF0EA5E9), Color(0xFF2563EB)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const softShadow = [
+    BoxShadow(color: Color(0x143B3B6B), blurRadius: 18, offset: Offset(0, 6)),
+  ];
 
   static ThemeData get light {
-    final scheme = ColorScheme.fromSeed(seedColor: seed);
+    final scheme = ColorScheme.fromSeed(seedColor: primary);
     final border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(14),
-      borderSide: const BorderSide(color: Color(0xFFE6E9F2)),
+      borderSide: const BorderSide(color: Color(0xFFE3E7F2)),
     );
     return ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
-      scaffoldBackgroundColor: const Color(0xFFF5F7FB),
+      scaffoldBackgroundColor: background,
       appBarTheme: const AppBarTheme(
-        centerTitle: false,
-        backgroundColor: Color(0xFFF5F7FB),
+        backgroundColor: background,
         surfaceTintColor: Colors.transparent,
         elevation: 0,
-        titleTextStyle: TextStyle(
-            color: Color(0xFF1B1F3B), fontSize: 22, fontWeight: FontWeight.w700),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
         contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
         border: border,
         enabledBorder: border,
         focusedBorder: border.copyWith(
-            borderSide: BorderSide(color: scheme.primary, width: 1.6)),
+            borderSide: const BorderSide(color: primary, width: 1.6)),
+        errorBorder: border.copyWith(
+            borderSide: const BorderSide(color: Colors.redAccent)),
+        focusedErrorBorder: border.copyWith(
+            borderSide: const BorderSide(color: Colors.redAccent, width: 1.6)),
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
-          minimumSize: const Size.fromHeight(52),
+          backgroundColor: primary,
+          minimumSize: const Size.fromHeight(54),
+          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         ),
+      ),
+      chipTheme: ChipThemeData(
+        backgroundColor: Colors.white,
+        side: const BorderSide(color: Color(0xFFE3E7F2)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
     );
   }

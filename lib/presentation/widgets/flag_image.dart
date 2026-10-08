@@ -12,11 +12,11 @@ class FlagImage extends StatelessWidget {
     final placeholder = Container(
       width: width,
       height: height,
-      color: Colors.grey.shade200,
-      child: Icon(Icons.flag_rounded, color: Colors.grey.shade500),
+      color: const Color(0xFFE9ECF5),
+      child: const Icon(Icons.flag_rounded, color: Color(0xFF9AA0B5)),
     );
     return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(10),
       child: url == null
           ? placeholder
           : Image.network(
